@@ -1,3 +1,7 @@
+const deleteTask = function() {
+    this.parentElement.remove();
+}
+
 const openAddWindow = function(id) {
     addId = id;
     document.querySelector('.add_form').classList.remove('hide');
@@ -89,6 +93,7 @@ const addTask = function() {
 function dragDrop(){
     const cards = document.querySelectorAll('.taskcard');
     const cells = document.querySelectorAll('.listcell');
+    const trashCan = document.querySelector('.trash__can');
 
     const dragStart = function(event) {
         setTimeout(() => {
@@ -102,7 +107,17 @@ function dragDrop(){
         this.classList.remove('hide');
     };
 
+    const deleteTask = function(event) {
+        let itemId = event.dataTransfer.getData('id');
+        document.getElementById(itemId).remove();
+        this.classList.remove('hovered__trash');
+    };
+
     const dragOver = function(evt) {
+        evt.preventDefault();
+    };
+
+    const dragOverTrash = function(evt) {
         evt.preventDefault();
     };
 
@@ -111,8 +126,17 @@ function dragDrop(){
         this.classList.add('hovered');
     };
 
+    const dragEnterTrash = function(evt) {
+        evt.preventDefault();
+        this.classList.add('hovered__trash');
+    };
+
     const dragLeave = function() {
         this.classList.remove('hovered');
+    };
+
+    const dragLeaveTrash = function() {
+        this.classList.remove('hovered__trash');
     };
 
     const dragDrop = function(event) {
@@ -146,6 +170,11 @@ function dragDrop(){
         cell.addEventListener('drop', dragDrop);
     });
 
+    trashCan.addEventListener('dragover', dragOverTrash);
+    trashCan.addEventListener('dragenter', dragEnterTrash);
+    trashCan.addEventListener('dragleave', dragLeaveTrash);
+    trashCan.addEventListener('drop', deleteTask);
+
     cards.forEach((card) => {
         card.addEventListener('dragstart', dragStart);
         card.addEventListener('dragend', dragEnd);
@@ -155,6 +184,7 @@ function dragDrop(){
     
     
 };
+
 
 var cellheight = 150;
 var id_counter = 1;

@@ -104,6 +104,11 @@ body{
     background-color:  rgb(209, 209, 209);
 }
 
+.hovered__trash {
+    background: rgb(144,144,144);
+    background: radial-gradient(circle, rgba(144,144,144,1) 0%, rgba(255,255,255,1) 60%);
+}
+
 header {
     /*display: block;*/
     height: 150px;
@@ -195,4 +200,39 @@ button {
 
 .hide {
     display: none;
+}
+
+.delButton {
+    position:absolute;
+    align-self: flex-end;
+    margin: 7px;
+    z-index: 1000;
+	box-shadow:inset 0px 34px 0px -15px #adadad;
+	background-color:#afafaf;
+	border:1px solid #241d13;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:8px 11px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #505050;
+    
+}
+
+.delButton:hover {
+	background-color:#9b9b9b;
+}
+
+.delButton:active {
+	position:relative;
+	top:1px;
+}
+
+.trash {
+    margin-left: 95%;
+}
+.trash__can {
+    height: 50px;
 }
