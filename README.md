@@ -1,6 +1,6 @@
 # TaskMaster_training
 
 Practiced at:
-1. Drag n drop
+1. Drag N Drop
 2. DOM methods
-3. Css properties
+3. CSS properties
